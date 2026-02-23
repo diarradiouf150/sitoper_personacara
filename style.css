@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #E0FFFF;
+    background-color: #FFE4E1;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -28,4 +28,65 @@ h1 {
     color: #555;
     font-size: 1.5rem;
     line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.image-container {
+    flex: 0 0 300px;
+}
+
+.heart-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-container {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.message {
+    color: #333;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.signature {
+    color: #9B7BA8;
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .image-container {
+        flex: 0 0 auto;
+    }
+    
+    .message {
+        font-size: 1rem;
+    }
 }

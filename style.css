@@ -4,15 +4,70 @@
     box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap');
 
 body {
-    background: linear-gradient(135deg, #ADD8E6 0%, #008B8B 100%);
-    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(135deg, rgba(173, 216, 230, 0.85) 0%, rgba(0, 139, 139, 0.85) 100%), 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="scales" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="15" fill="none" stroke="%2300CED1" stroke-width="1" opacity="0.4"/><path d="M 20 5 Q 28 20 20 35 Q 12 20 20 5" fill="%2300CED1" opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23scales)"/></svg>');
+    background-attachment: fixed;
+    font-family: "Playfair Display", serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Stelle animate in background */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.stars-container::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: transparent;
+    
+    /* create many small white dots as stars */
+    box-shadow: 
+        20px 30px #fff,   40px 80px #fff,   60px 50px #fff,
+        80px 120px #fff,  100px 20px #fff,  120px 160px #fff,
+        140px 90px #fff,  160px 200px #fff,  180px 110px #fff,
+        200px 40px #fff,  220px 140px #fff,  240px 70px #fff,
+        260px 180px #fff, 280px 100px #fff,  300px 50px #fff,
+        320px 190px #fff, 340px 130px #fff, 360px 60px #fff,
+        380px 170px #fff, 400px 90px #fff,  420px 210px #fff,
+        440px 120px #fff, 460px 30px #fff,  480px 160px #fff,
+        500px 80px #fff,  520px 200px #fff,  540px 110px #fff;
+    animation: moveStars 8s linear infinite;
+}
+
+@keyframes moveStars {
+    from { transform: translate(0,0); }
+    to { transform: translate(-1000px, -500px); }
+}
+
+
+.container {
+    position: relative;
+    z-index: 10;
+}
+
+/* hide default audio controls if shown */
+#audio, #baby-shark-audio {
+    display: none;
 }
 
 .container {
@@ -31,6 +86,57 @@ h1 {
     font-size: 1.5rem;
     line-height: 1.6;
     margin-bottom: 40px;
+}
+
+.unified-text {
+    color: #333;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin: 0;
+    max-width: 600px;
+    text-align: left;
+    font-style: italic;
+}
+
+.text-image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap-reverse;
+}
+
+.image-block {
+    flex: 0 0 300px;
+}
+
+.image-block .heart-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.image-block .heart-image.additional {
+    max-width: 200px;
+}
+
+.image-block .heart-image.scales {
+    max-width: 400px;
+    width: auto;
+}
+@media (max-width: 768px) {
+    .text-image-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .unified-text {
+        text-align: center;
+        max-width: 100%;
+    }
 }
 
 .content-wrapper {
